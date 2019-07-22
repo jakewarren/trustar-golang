@@ -12,7 +12,7 @@ See https://docs.trustar.co/api/index.html for the official documentation to the
 
 ## Roadmap
 
-Implemented endpoints can be found in ![TODO.md](TODO.md)
+Implemented endpoints can be found in [TODO.md](TODO.md)
 
 ## Disclaimer
 
