@@ -74,6 +74,10 @@ Implemented endpoints can be found in [TODO.md](TODO.md)
 
 This project is currently in alpha status. Breaking changes are possible and the project has not been thoroughly tested.
 
+## Acknowledgements
+
+The overall design of this client is based upon [logpacker/PayPal-Go-SDK](https://github.com/logpacker/PayPal-Go-SDK)
+
 ## License
 
 MIT © 2019 Jake Warren
