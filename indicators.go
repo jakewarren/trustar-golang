@@ -66,11 +66,7 @@ func (c *Client) WhitelistIndicators(indicators []string) error {
 		return err
 	}
 
-	if err = c.SendWithAuth(req, &wr); err != nil {
-		return err
-	}
-
-	return nil
+	return c.SendWithAuth(req, &wr)
 }
 
 // GetWhitelist Get a paginated list of the indicators that have been whitelisted by the user’s company.
@@ -180,9 +176,5 @@ func (c *Client) SubmitIndicators(indicators IndicatorSubmission) error {
 		return err
 	}
 
-	if err = c.SendWithAuth(req, &imr); err != nil {
-		return err
-	}
-
-	return nil
+	return c.SendWithAuth(req, &imr)
 }

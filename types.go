@@ -28,7 +28,7 @@ type (
 		ExpiresIn expirationTime `json:"expires_in"`
 	}
 
-	// Client represents a Paypal REST API Client
+	// Client represents a TruSTAR REST API Client
 	Client struct {
 		sync.Mutex
 		Client         *http.Client
@@ -97,6 +97,7 @@ type (
 		PageSize   int64 `json:"pageSize"`
 	}
 
+	// SearchIndicatorReponse contains the search results when searching indicators
 	SearchIndicatorReponse struct {
 		Empty   bool `json:"empty"`
 		HasNext bool `json:"hasNext"`
@@ -189,12 +190,14 @@ type (
 		Indicator
 	}
 
+	// IndicatorSubmission records the information needed to submit a new indicator to TruSTAR
 	IndicatorSubmission struct {
 		EnclaveIDS []string           `json:"enclaveIds"`
 		Content    []IndicatorContent `json:"content"`
 		Tags       []IndicatorTag     `json:"tags,omitempty"`
 	}
 
+	// IndicatorContent details an indicator object when submitting a new indicator
 	IndicatorContent struct {
 		Value     string         `json:"value"`
 		FirstSeen int64          `json:"firstSeen,omitempty"`
@@ -205,6 +208,7 @@ type (
 		Tags      []IndicatorTag `json:"tags,omitempty"`
 	}
 
+	// IndicatorTag contains the tag information
 	IndicatorTag struct {
 		Name      string `json:"name"`
 		EnclaveID string `json:"enclaveId"`
@@ -221,6 +225,7 @@ type (
 		Title              string   `json:"title"`
 	}
 
+	// ReportDetails contains the details for a specific report
 	ReportDetails struct {
 		Created          int64    `json:"created"`
 		DistributionType string   `json:"distributionType"`

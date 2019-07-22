@@ -109,11 +109,7 @@ func (c *Client) UpdateReport(id string, report ReportSubmission) error {
 		return err
 	}
 
-	if err = c.SendWithAuth(req, ioutil.Discard); err != nil {
-		return err
-	}
-
-	return nil
+	return c.SendWithAuth(req, ioutil.Discard)
 }
 
 // GetReportDetails Gets the details for a report for the specified Trustar report id
@@ -149,11 +145,7 @@ func (c *Client) DeleteReport(id string) error {
 		return err
 	}
 
-	if err = c.SendWithAuth(req, ioutil.Discard); err != nil {
-		return err
-	}
-
-	return nil
+	return c.SendWithAuth(req, ioutil.Discard)
 }
 
 // SearchReports Searches for all reports that contain the given search term.
