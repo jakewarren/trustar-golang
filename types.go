@@ -99,18 +99,13 @@ type (
 
 	// SearchIndicatorReponse contains the search results when searching indicators
 	SearchIndicatorReponse struct {
-		Empty   bool `json:"empty"`
-		HasNext bool `json:"hasNext"`
-		Items   []struct {
-			GUID          string `json:"guid"`
-			IndicatorType string `json:"indicatorType"`
-			PriorityLevel string `json:"priorityLevel"`
-			Value         string `json:"value"`
-		} `json:"items"`
-		PageNumber    int64 `json:"pageNumber"`
-		PageSize      int64 `json:"pageSize"`
-		TotalElements int64 `json:"totalElements"`
-		TotalPages    int64 `json:"totalPages"`
+		Empty         bool        `json:"empty"`
+		HasNext       bool        `json:"hasNext"`
+		Items         []Indicator `json:"items"`
+		PageNumber    int64       `json:"pageNumber"`
+		PageSize      int64       `json:"pageSize"`
+		TotalElements int64       `json:"totalElements"`
+		TotalPages    int64       `json:"totalPages"`
 	}
 
 	// ReportIndicatorsResponse is the response object from Get Indicators for Report endpoint
@@ -129,15 +124,11 @@ type (
 
 	// RelatedIndicatorsResponse is the response object from Find Related Indicators endpoint
 	RelatedIndicatorsResponse struct {
-		Empty   bool `json:"empty"`
-		HasNext bool `json:"hasNext"`
-		Items   []struct {
-			GUID          string `json:"guid"`
-			IndicatorType string `json:"indicatorType"`
-			Value         string `json:"value"`
-		} `json:"items"`
-		PageNumber int64 `json:"pageNumber"`
-		PageSize   int64 `json:"pageSize"`
+		Empty      bool        `json:"empty"`
+		HasNext    bool        `json:"hasNext"`
+		Items      []Indicator `json:"items"`
+		PageNumber int64       `json:"pageNumber"`
+		PageSize   int64       `json:"pageSize"`
 	}
 
 	// RequestQuotas represents the current status of the company’s request quotas.
@@ -152,15 +143,11 @@ type (
 
 	// WhitelistIndicatorsResponse represents the indicators that have been whitelisted by the user's company
 	WhitelistIndicatorsResponse struct {
-		Empty   bool `json:"empty"`
-		HasNext bool `json:"hasNext"`
-		Items   []struct {
-			GUID          string `json:"guid"`
-			IndicatorType string `json:"indicatorType"`
-			Value         string `json:"value"`
-		} `json:"items"`
-		PageNumber int64 `json:"pageNumber"`
-		PageSize   int64 `json:"pageSize"`
+		Empty      bool        `json:"empty"`
+		HasNext    bool        `json:"hasNext"`
+		Items      []Indicator `json:"items"`
+		PageNumber int64       `json:"pageNumber"`
+		PageSize   int64       `json:"pageSize"`
 	}
 
 	// IndicatorMetadataResponse is a metadata object containing the metadata for the requested indicator(s).
@@ -180,8 +167,10 @@ type (
 
 	// Indicator hold the indicator metadata search queries
 	Indicator struct {
-		Type  string `json:"indicatorType",omitempty`
-		Value string `json:"value"`
+		GUID          string `json:"guid,omitempty"`
+		IndicatorType string `json:"indicatorType,omitempty"`
+		PriorityLevel string `json:"priorityLevel,omitempty"`
+		Value         string `json:"value"`
 	}
 
 	// TrendingIndicators holds a list of Indicator objects that are trending in the community
