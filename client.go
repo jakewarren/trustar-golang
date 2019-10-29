@@ -20,7 +20,7 @@ func NewClient(clientID string, secret string, APIBase string) (*Client, error) 
 	}
 
 	client := &http.Client{
-		Timeout: 15 * time.Second,
+		Timeout: 90 * time.Second,
 	}
 
 	return &Client{
