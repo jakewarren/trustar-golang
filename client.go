@@ -167,17 +167,17 @@ func (c *Client) SendWithBasicAuth(req *http.Request, v interface{}) error {
 func (c *Client) log(r *http.Request, resp *http.Response) {
 	if c.Log != nil {
 		var (
-			reqDump  string
+			reqDump  []byte
 			respDump []byte
 		)
 
 		if r != nil {
-			reqDump = fmt.Sprintf("%s %s. Data: %s", r.Method, r.URL.String(), r.Form.Encode())
+			reqDump, _ = httputil.DumpRequest(r, true)
 		}
 		if resp != nil {
 			respDump, _ = httputil.DumpResponse(resp, true)
 		}
 
-		c.Log.Write([]byte(fmt.Sprintf("Request: %s\nResponse: %s\n", reqDump, string(respDump))))
+		_, _ = c.Log.Write([]byte(fmt.Sprintf("Request: %s\nResponse: %s\n", string(reqDump), string(respDump))))
 	}
 }
