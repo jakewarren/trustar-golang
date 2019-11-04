@@ -36,7 +36,7 @@ func main() {
 	enclaveIDs := []string{"abc-123-def"}
 
 	// initialize the client with our API auth information
-	c, err := trustar.NewClient("TruSTAR Client ID goes here", "TruSTAR Client Secret goes here", trustar.APIBaseLive)
+	c, err := trustar.NewClient("TruSTAR API Key goes here", "TruSTAR API Secret goes here", trustar.APIBaseLive)
 	if err != nil {
 		log.Fatal().Err(err).Msg("error creating client")
 	}
