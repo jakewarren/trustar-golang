@@ -57,44 +57,20 @@ type (
 
 	// ReportResponse represents the list of reports matching the user's query
 	ReportResponse struct {
-		Empty   bool `json:"empty,omitempty"`
-		HasNext bool `json:"hasNext"`
-		Reports []struct {
-			Created          int64    `json:"created"`
-			DistributionType string   `json:"distributionType"`
-			EnclaveIds       []string `json:"enclaveIds"`
-			ID               string   `json:"id"`
-			ReportBody       string   `json:"reportBody"`
-			Sector           struct {
-				ID    int64  `json:"id"`
-				Label string `json:"label"`
-				Name  string `json:"name"`
-			} `json:"sector"`
-			SubmissionStatus string `json:"submissionStatus"`
-			TimeBegan        int64  `json:"timeBegan"`
-			Title            string `json:"title"`
-			Updated          int64  `json:"updated"`
-		} `json:"items"`
-		PageNumber int64 `json:"pageNumber"`
-		PageSize   int64 `json:"pageSize"`
+		Empty      bool            `json:"empty,omitempty"`
+		HasNext    bool            `json:"hasNext"`
+		Reports    []ReportDetails `json:"items"`
+		PageNumber int64           `json:"pageNumber"`
+		PageSize   int64           `json:"pageSize"`
 	}
 
 	// CorrelatedReportResponse is the reponse object from the Find Correlated Reports endpoint
 	CorrelatedReportResponse struct {
-		Empty   bool `json:"empty"`
-		HasNext bool `json:"hasNext"`
-		Items   []struct {
-			Created          int64         `json:"created"`
-			DistributionType string        `json:"distributionType"`
-			EnclaveIds       []interface{} `json:"enclaveIds"`
-			ID               string        `json:"id"`
-			ReportBody       string        `json:"reportBody"`
-			TimeBegan        int64         `json:"timeBegan"`
-			Title            string        `json:"title"`
-			Updated          int64         `json:"updated"`
-		} `json:"items"`
-		PageNumber int64 `json:"pageNumber"`
-		PageSize   int64 `json:"pageSize"`
+		Empty      bool            `json:"empty"`
+		HasNext    bool            `json:"hasNext"`
+		Items      []ReportDetails `json:"items"`
+		PageNumber int64           `json:"pageNumber"`
+		PageSize   int64           `json:"pageSize"`
 	}
 
 	// SearchIndicatorReponse contains the search results when searching indicators
@@ -110,16 +86,11 @@ type (
 
 	// ReportIndicatorsResponse is the response object from Get Indicators for Report endpoint
 	ReportIndicatorsResponse struct {
-		Empty   bool `json:"empty"`
-		HasNext bool `json:"hasNext"`
-		Items   []struct {
-			GUID          string `json:"guid"`
-			IndicatorType string `json:"indicatorType"`
-			Value         string `json:"value"`
-			Weight        int64  `json:"weight"`
-		} `json:"items"`
-		PageNumber int64 `json:"pageNumber"`
-		PageSize   int64 `json:"pageSize"`
+		Empty      bool        `json:"empty"`
+		HasNext    bool        `json:"hasNext"`
+		Items      []Indicator `json:"items"`
+		PageNumber int64       `json:"pageNumber"`
+		PageSize   int64       `json:"pageSize"`
 	}
 
 	// RelatedIndicatorsResponse is the response object from Find Related Indicators endpoint
@@ -152,17 +123,17 @@ type (
 
 	// IndicatorMetadataResponse is a metadata object containing the metadata for the requested indicator(s).
 	IndicatorMetadataResponse []struct {
-		EnclaveIds    []string      `json:"enclaveIds"`
-		FirstSeen     int64         `json:"firstSeen"`
-		GUID          string        `json:"guid"`
-		IndicatorType string        `json:"indicatorType"`
-		LastSeen      int64         `json:"lastSeen"`
-		NoteCount     int64         `json:"noteCount"`
-		Notes         []interface{} `json:"notes"`
-		PriorityLevel string        `json:"priorityLevel"`
-		Sightings     int64         `json:"sightings"`
-		Tags          []interface{} `json:"tags"`
-		Value         string        `json:"value"`
+		EnclaveIds    []string       `json:"enclaveIds"`
+		FirstSeen     int64          `json:"firstSeen"`
+		GUID          string         `json:"guid"`
+		IndicatorType string         `json:"indicatorType"`
+		LastSeen      int64          `json:"lastSeen"`
+		NoteCount     int64          `json:"noteCount"`
+		Notes         []string       `json:"notes"`
+		PriorityLevel string         `json:"priorityLevel"`
+		Sightings     int64          `json:"sightings"`
+		Tags          []IndicatorTag `json:"tags"`
+		Value         string         `json:"value"`
 	}
 
 	// Indicator hold the indicator metadata search queries
@@ -199,6 +170,7 @@ type (
 
 	// IndicatorTag contains the tag information
 	IndicatorTag struct {
+		Guid      string `json:"guid"`
 		Name      string `json:"name"`
 		EnclaveID string `json:"enclaveId"`
 	}
@@ -222,13 +194,17 @@ type (
 		ExternalID       string   `json:"externalId"`
 		ID               string   `json:"id"`
 		ReportBody       string   `json:"reportBody"`
-		Sector           struct {
-			Label string `json:"label"`
-			Name  string `json:"name"`
-		} `json:"sector"`
-		TimeBegan int64  `json:"timeBegan"`
-		Title     string `json:"title"`
-		Updated   int64  `json:"updated"`
+		Sector           Sector   `json:"sector"`
+		TimeBegan        int64    `json:"timeBegan"`
+		Title            string   `json:"title"`
+		Updated          int64    `json:"updated"`
+	}
+
+	// Sector records sector information for reports and indicators
+	Sector struct {
+		ID    int64  `json:"id"`
+		Label string `json:"label"`
+		Name  string `json:"name"`
 	}
 )
 
