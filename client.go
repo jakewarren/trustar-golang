@@ -86,7 +86,7 @@ func (c *Client) Send(req *http.Request, v interface{}) error {
 
 	// add headers from https://docs.trustar.co/api/index.html#headers to play nice
 	req.Header.Set("Client-Type", "API")
-	req.Header.Set("Client-Version", "v0.1.0")
+	req.Header.Set("Client-Version", "v0.1.0") // TODO: dynamically update
 	req.Header.Set("Client-Metatag", "github.com/jakewarren/trustar-golang")
 
 	// Set default headers
